@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://cl00brbudydo0"]
+
+[ext_resource type="PackedScene" uid="uid://di6c7pmhe5018" path="res://Scenes/Player/player.tscn" id="1_3p48g"]
+[ext_resource type="Texture2D" uid="uid://kgj6nk6ysygu" path="res://Assets/Prototype Background/texture_01.png" id="1_ykxrc"]
+[ext_resource type="PackedScene" uid="uid://dy4ph0purpaeq" path="res://Scenes/Enemies/enemy.tscn" id="2_dvp46"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s71eg"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_ykxrc"]
+sky_material = SubResource("ProceduralSkyMaterial_s71eg")
+
+[sub_resource type="Environment" id="Environment_ir44m"]
+background_mode = 1
+background_color = Color(0.337255, 0.756863, 0.847059, 1)
+sky = SubResource("Sky_ykxrc")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.305882, 0.576471, 0.705882, 1)
+fog_density = 1.0
+fog_height = 1024.0
+fog_height_density = -16.0
+fog_depth_end = 161.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ir44m"]
+albedo_texture = ExtResource("1_ykxrc")
+uv1_scale = Vector3(2.475, 2.475, 2.475)
+uv1_triplanar = true
+
+[node name="TestLevel" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_ir44m")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 33.4079, 0)
+shadow_enabled = true
+
+[node name="Player" parent="Environment" instance=ExtResource("1_3p48g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.172421, 0, -0.240826)
+
+[node name="Enemy" parent="Environment" instance=ExtResource("2_dvp46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1603, 0, 4.47062)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.141846, -43.8911, -0.603394)
+use_collision = true
+size = Vector3(53.2422, 87.7822, 48.5066)
+material = SubResource("StandardMaterial3D_ir44m")
