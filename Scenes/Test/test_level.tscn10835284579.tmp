@@ -66,6 +66,7 @@ material = SubResource("StandardMaterial3D_ir44m")
 [node name="CanvasLayer" parent="." instance=ExtResource("4_dvp46")]
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

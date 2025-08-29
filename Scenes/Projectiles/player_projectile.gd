@@ -2,7 +2,7 @@ extends Area3D
 
 
 ## Bullet Attributes
-const SPEED = 20
+const SPEED = 30
 const DISTANCE_LIMIT = 2.0
 const TRAVEL_RATE = 2
 var travelled_distance = 00
