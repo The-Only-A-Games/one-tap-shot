@@ -47,8 +47,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.172421, 0, -0.240826)
 [node name="Enemy" parent="Environment" instance=ExtResource("2_dvp46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1603, 0, 4.47062)
 
+[node name="Enemy2" parent="Environment" instance=ExtResource("2_dvp46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.973842, 0, 2.55376)
+
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.141846, -43.8911, -0.603394)
 use_collision = true
 size = Vector3(53.2422, 87.7822, 48.5066)
 material = SubResource("StandardMaterial3D_ir44m")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0766495, 0.997058, 0, -0.997058, 0.0766495, -0.0750484, 12.3899, 2.13889)
