@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cl00brbudydo0"]
+[gd_scene load_steps=11 format=3 uid="uid://cl00brbudydo0"]
 
 [ext_resource type="PackedScene" uid="uid://di6c7pmhe5018" path="res://Scenes/Player/player.tscn" id="1_3p48g"]
+[ext_resource type="Script" uid="uid://c6syly8coclkl" path="res://Scripts/game_manager.gd" id="1_d20bp"]
 [ext_resource type="Texture2D" uid="uid://kgj6nk6ysygu" path="res://Assets/Prototype Background/texture_01.png" id="1_ykxrc"]
 [ext_resource type="PackedScene" uid="uid://dy4ph0purpaeq" path="res://Scenes/Enemies/enemy.tscn" id="2_dvp46"]
+[ext_resource type="PackedScene" uid="uid://xmkwy1whb4bm" path="res://Scenes/canvas_layer.tscn" id="4_dvp46"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s71eg"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -35,6 +37,8 @@ uv1_scale = Vector3(2.475, 2.475, 2.475)
 uv1_triplanar = true
 
 [node name="TestLevel" type="Node3D"]
+script = ExtResource("1_d20bp")
+canvas_layer_path = NodePath("CanvasLayer")
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -60,17 +64,19 @@ use_collision = true
 size = Vector3(32.1729, 87.7822, 29.3535)
 material = SubResource("StandardMaterial3D_ir44m")
 
-[node name="Enemy" parent="NavigationRegion3D" instance=ExtResource("2_dvp46")]
+[node name="Enemy" parent="NavigationRegion3D" groups=["Enemies"] instance=ExtResource("2_dvp46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1788, 0, 4.47062)
 
-[node name="Enemy2" parent="NavigationRegion3D" instance=ExtResource("2_dvp46")]
+[node name="Enemy2" parent="NavigationRegion3D" groups=["Enemies"] instance=ExtResource("2_dvp46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3799, 0, 9.28213)
 
-[node name="Enemy3" parent="NavigationRegion3D" instance=ExtResource("2_dvp46")]
+[node name="Enemy3" parent="NavigationRegion3D" groups=["Enemies"] instance=ExtResource("2_dvp46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.973842, 0, -11.8474)
 
-[node name="Enemy4" parent="NavigationRegion3D" instance=ExtResource("2_dvp46")]
+[node name="Enemy4" parent="NavigationRegion3D" groups=["Enemies"] instance=ExtResource("2_dvp46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2328, 0, -11.8474)
 
-[node name="Enemy5" parent="NavigationRegion3D" instance=ExtResource("2_dvp46")]
+[node name="Enemy5" parent="NavigationRegion3D" groups=["Enemies"] instance=ExtResource("2_dvp46")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2328, 0, -1.93127)
+
+[node name="CanvasLayer" parent="." instance=ExtResource("4_dvp46")]

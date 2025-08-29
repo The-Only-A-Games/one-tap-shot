@@ -1,6 +1,8 @@
 extends CharacterBody3D
 
 
+## Player Stats
+
 @onready var marker = %Marker3D
 const PLAYER_PROJECTILE = preload("res://Scenes/Projectiles/player_projectile.tscn")
 

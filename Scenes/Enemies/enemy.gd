@@ -8,10 +8,12 @@ const SPEED = 5
 @onready var nav_agent = %NavigationAgent
 var player
 @onready var area_3d = $Area3D
+var canvas_layer
 
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
+	canvas_layer = get_tree().get_first_node_in_group("canvas_layer")
 
 
 func _physics_process(delta):
@@ -24,11 +26,14 @@ func _physics_process(delta):
 		velocity = (next_nav_point - global_position).normalized() * SPEED
 		move_and_slide()
 
+
+## FOR PLAYER!!!
+# player calls kill() too kill the player
 func kill():
 	queue_free()
 
 
 func _on_area_3d_body_entered(body):
 	if body.is_in_group("player"):
-		print("Player damage")
+		canvas_layer.player_damage(20)
 		queue_free()
