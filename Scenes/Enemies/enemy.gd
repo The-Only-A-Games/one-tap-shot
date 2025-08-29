@@ -7,6 +7,7 @@ const SPEED = 5
 ## Enemy Tools
 @onready var nav_agent = %NavigationAgent
 var player
+@onready var area_3d = $Area3D
 
 
 func _ready():
@@ -25,3 +26,9 @@ func _physics_process(delta):
 
 func kill():
 	queue_free()
+
+
+func _on_area_3d_body_entered(body):
+	if body.is_in_group("player"):
+		print("Player damage")
+		queue_free()
