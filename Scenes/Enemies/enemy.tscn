@@ -8,11 +8,11 @@ albedo_color = Color(0.36304, 0.32869, 0.482217, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_613su"]
 material = SubResource("StandardMaterial3D_3pdns")
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jcvw6"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jcvw6"]
 radius = 1.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_613su"]
-radius = 0.7
+radius = 1.2
 
 [node name="Enemy" type="CharacterBody3D" groups=["enemies"]]
 script = ExtResource("1_613su")
@@ -23,7 +23,7 @@ mesh = SubResource("CapsuleMesh_613su")
 
 [node name="CollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_jcvw6")
+shape = SubResource("CylinderShape3D_jcvw6")
 
 [node name="NavigationAgent" type="NavigationAgent3D" parent="."]
 unique_name_in_owner = true

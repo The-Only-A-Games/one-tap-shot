@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck5ec2k42t0l8"]
+
+[ext_resource type="PackedScene" uid="uid://di6c7pmhe5018" path="res://Scenes/Player/player.tscn" id="1_km3fo"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s71eg"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_ykxrc"]
+sky_material = SubResource("ProceduralSkyMaterial_s71eg")
+
+[sub_resource type="Environment" id="Environment_ir44m"]
+background_mode = 1
+background_color = Color(0.337255, 0.756863, 0.847059, 1)
+sky = SubResource("Sky_ykxrc")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.305882, 0.576471, 0.705882, 1)
+fog_density = 1.0
+fog_height = 1024.0
+fog_height_density = -16.0
+fog_depth_end = 161.0
+
+[node name="Environment" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ir44m")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 33.4079, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_km3fo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.172421, 0, -0.240826)
