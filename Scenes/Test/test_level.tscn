@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cl00brbudydo0"]
+[gd_scene load_steps=8 format=3 uid="uid://cl00brbudydo0"]
 
+[ext_resource type="PackedScene" uid="uid://di6c7pmhe5018" path="res://Scenes/Player/player.tscn" id="1_3p48g"]
 [ext_resource type="Script" uid="uid://c6syly8coclkl" path="res://Scripts/game_manager.gd" id="1_d20bp"]
 [ext_resource type="Texture2D" uid="uid://kgj6nk6ysygu" path="res://Assets/Prototype Background/texture_01.png" id="1_ykxrc"]
 [ext_resource type="PackedScene" uid="uid://ck5ec2k42t0l8" path="res://Scenes/environment.tscn" id="2_dvp46"]
@@ -38,4 +39,5 @@ material = SubResource("StandardMaterial3D_ir44m")
 wait_time = 0.5
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="Player" parent="." instance=ExtResource("1_3p48g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)

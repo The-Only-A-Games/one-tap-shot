@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="One Tap Shot"
-run/main_scene="uid://cl00brbudydo0"
+run/main_scene="uid://d2nphxt07datb"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
