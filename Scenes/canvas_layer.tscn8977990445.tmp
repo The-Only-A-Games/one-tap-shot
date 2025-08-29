@@ -48,7 +48,6 @@ grow_vertical = 2
 text = "Kills: 0"
 
 [node name="GameOverMenu" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -73,5 +72,3 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Replay
 "
-
-[connection signal="pressed" from="GameOverMenu/Button" to="." method="_on_button_pressed"]

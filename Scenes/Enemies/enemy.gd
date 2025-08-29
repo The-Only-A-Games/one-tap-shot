@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 
 ##Enemy Attributes
-const SPEED = 5
+const SPEED = 2
 
 ## Enemy Tools
 @onready var nav_agent = %NavigationAgent

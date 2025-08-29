@@ -52,7 +52,7 @@ shadow_enabled = true
 [node name="Player" parent="Environment" instance=ExtResource("1_3p48g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.172421, 0, -0.240826)
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." groups=["camera"]]
 transform = Transform3D(1, 0, 0, 0, 0.659805, 0.751437, 0, -0.751437, 0.659805, -0.0687523, 16.0853, 21.2924)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]

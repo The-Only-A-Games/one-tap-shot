@@ -5,8 +5,19 @@ extends CharacterBody3D
 
 @onready var marker = %Marker3D
 const PLAYER_PROJECTILE = preload("res://Scenes/Projectiles/player_projectile.tscn")
+var canvas_layer
+var camera
+
+func _ready():
+	canvas_layer = get_tree().get_first_node_in_group("canvas_layer")
+	camera = get_tree().get_first_node_in_group("camera")
+
 
 func _physics_process(delta):
+	if canvas_layer.get_health() <= 0.0:
+		canvas_layer.game_over_screen()
+	
+	rotate_toward_mouse()
 	
 	if Input.is_action_just_pressed("shoot"):
 		var enemy = get_closest_enemy()
@@ -18,7 +29,7 @@ func _physics_process(delta):
 			# Flatten Y so rotation is only horizontal
 			target_pos.y = my_pos.y
 
-			look_at(target_pos, Vector3.UP)
+			#look_at(target_pos, Vector3.UP)
 		shoot()
 
 ## Gets the closest enemy to the player
@@ -50,3 +61,23 @@ func shoot():
 	bullet.global_transform = marker.global_transform
 	
 	get_tree().current_scene.add_child(bullet)
+
+
+func rotate_toward_mouse():
+	var mouse_pos = get_viewport().get_mouse_position()
+	var from = camera.project_ray_origin(mouse_pos)
+	var to = from + camera.project_ray_normal(mouse_pos) * 1000
+
+	var space_state = get_world_3d().direct_space_state
+
+	var query = PhysicsRayQueryParameters3D.new()
+	query.from = from
+	query.to = to
+	query.exclude = [self]
+
+	var result = space_state.intersect_ray(query)
+	
+	if result:
+		var target = result.position
+		target.y = global_transform.origin.y  # keep flat
+		look_at(target, Vector3.UP)
