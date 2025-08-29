@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cl00brbudydo0"]
+[gd_scene load_steps=9 format=3 uid="uid://cl00brbudydo0"]
 
 [ext_resource type="PackedScene" uid="uid://di6c7pmhe5018" path="res://Scenes/Player/player.tscn" id="1_3p48g"]
 [ext_resource type="Texture2D" uid="uid://kgj6nk6ysygu" path="res://Assets/Prototype Background/texture_01.png" id="1_ykxrc"]
@@ -25,6 +25,10 @@ fog_height = 1024.0
 fog_height_density = -16.0
 fog_depth_end = 161.0
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_3p48g"]
+vertices = PackedVector3Array(-15.9895, 0.467773, -14.515, -15.9895, 0.467773, 13.735, 15.2605, 0.467773, 13.735, 15.2605, 0.467773, -14.515)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ir44m"]
 albedo_texture = ExtResource("1_ykxrc")
 uv1_scale = Vector3(2.475, 2.475, 2.475)
@@ -44,17 +48,29 @@ shadow_enabled = true
 [node name="Player" parent="Environment" instance=ExtResource("1_3p48g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.172421, 0, -0.240826)
 
-[node name="Enemy" parent="Environment" instance=ExtResource("2_dvp46")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.1603, 0, 4.47062)
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.659805, 0.751437, 0, -0.751437, 0.659805, -0.0687523, 16.0853, 21.2924)
 
-[node name="Enemy2" parent="Environment" instance=ExtResource("2_dvp46")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.973842, 0, 2.55376)
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_3p48g")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.141846, -43.8911, -0.603394)
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.403046, -43.8911, -0.338287)
 use_collision = true
-size = Vector3(53.2422, 87.7822, 48.5066)
+size = Vector3(32.1729, 87.7822, 29.3535)
 material = SubResource("StandardMaterial3D_ir44m")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.0766495, 0.997058, 0, -0.997058, 0.0766495, -0.0750484, 12.3899, 2.13889)
+[node name="Enemy" parent="NavigationRegion3D" instance=ExtResource("2_dvp46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1788, 0, 4.47062)
+
+[node name="Enemy2" parent="NavigationRegion3D" instance=ExtResource("2_dvp46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3799, 0, 9.28213)
+
+[node name="Enemy3" parent="NavigationRegion3D" instance=ExtResource("2_dvp46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.973842, 0, -11.8474)
+
+[node name="Enemy4" parent="NavigationRegion3D" instance=ExtResource("2_dvp46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2328, 0, -11.8474)
+
+[node name="Enemy5" parent="NavigationRegion3D" instance=ExtResource("2_dvp46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2328, 0, -1.93127)

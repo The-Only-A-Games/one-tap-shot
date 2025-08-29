@@ -19,23 +19,30 @@ func _physics_process(delta):
 			look_at(target_pos, Vector3.UP)
 		shoot()
 
+## Gets the closest enemy to the player
 func get_closest_enemy() -> Node:
-	var enemies = get_tree().get_nodes_in_group("enemies")
-	var closest_enemy = null
+	var enemies = get_tree().get_nodes_in_group("enemies") # Get all available enemies in the world
+	var closest_enemy = null 
 	var closest_distance = INF
+	
 	
 	if enemies != null:
 		for enemy in enemies:
 			if not enemy or not enemy.is_inside_tree():
 				continue
+			
+			# Capture the distance from the player to the enemy
 			var distance = global_transform.origin.distance_to(enemy.global_transform.origin)
 			
+			# 
 			if distance < closest_distance:
 				closest_distance = distance
 				closest_enemy = enemy
 	
 	return closest_enemy
 
+
+## Shoots projectile in the direction the player is facing
 func shoot():
 	var bullet = PLAYER_PROJECTILE.instantiate()
 	bullet.global_transform = marker.global_transform
