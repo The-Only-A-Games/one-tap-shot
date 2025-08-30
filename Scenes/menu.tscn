@@ -1,23 +1,86 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2nphxt07datb"]
+[gd_scene load_steps=10 format=3 uid="uid://d2nphxt07datb"]
 
 [ext_resource type="Script" uid="uid://dqx6dokbesy5a" path="res://Scripts/menu.gd" id="1_1rerr"]
+[ext_resource type="PackedScene" uid="uid://ck5ec2k42t0l8" path="res://Scenes/environment.tscn" id="2_158mb"]
+[ext_resource type="MeshLibrary" uid="uid://cvlwm5ujxxkj2" path="res://Resources/world-blocks-v1.tres" id="3_wwsa2"]
+[ext_resource type="PackedScene" uid="uid://b7rtveu132d6h" path="res://Assets/Player/Steve.glb" id="4_jsrd8"]
+[ext_resource type="PackedScene" uid="uid://cnl1ot7mntpl6" path="res://Assets/Enemies/Quek.glb" id="5_wwsa2"]
+[ext_resource type="AudioStream" uid="uid://bpa51hcsruw01" path="res://Assets/Sounds/Music/day1.wav" id="6_jsrd8"]
+[ext_resource type="Script" uid="uid://wks5pesoask" path="res://Scripts/music_player.gd" id="7_wbdvm"]
 
-[node name="Menu" type="CanvasLayer"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbdvm"]
+bg_color = Color(0.187388, 0.676252, 0.69894, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3rjx"]
+bg_color = Color(0.188235, 0.67451, 0.698039, 1)
+
+[node name="Menu" type="Node3D"]
 script = ExtResource("1_1rerr")
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Environment" parent="." instance=ExtResource("2_158mb")]
 
-[node name="Button" type="Button" parent="."]
-offset_left = 556.0
-offset_top = 304.0
-offset_right = 601.0
-offset_bottom = 335.0
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("3_wwsa2")
+data = {
+"cells": PackedInt32Array(-458751, 65532, 5, -458750, 65532, 5, -458750, 65533, 5, -458751, 65533, 5, -458752, 65531, 5, -458752, 65532, 5, -458752, 65533, 5, -458752, 65534, 5, -458751, 65534, 5, -458750, 65534, 5, -458749, 65534, 5, -458749, 65533, 5, -458749, 65532, 5, -458749, 65531, 5, -458750, 65531, 5, -458751, 65531, 5, -393216, 65531, 5, -393216, 65532, 5, -393216, 65533, 5, -393216, 65534, 5, -393215, 65534, 5, -393214, 65534, 5, -393213, 65534, 5, -393213, 65533, 5, -393213, 65532, 5, -393213, 65531, 5, -393214, 65531, 5, -393215, 65531, 5, -327680, 65531, 5, -327680, 65532, 5, -327680, 65533, 5, -327680, 65534, 5, -327679, 65534, 5, -327678, 65534, 5, -327677, 65534, 5, -327677, 65533, 5, -327677, 65532, 5, -327677, 65531, 5, -327678, 65531, 5, -327679, 65531, 5, -262144, 65531, 5, -262144, 65532, 5, -262144, 65533, 5, -262144, 65534, 5, -262143, 65534, 5, -262142, 65534, 5, -262141, 65534, 5, -262141, 65533, 5, -262141, 65532, 5, -262141, 65531, 5, -262142, 65531, 5, -262143, 65531, 5, -196608, 65531, 5, -196608, 65532, 5, -196608, 65533, 5, -196608, 65534, 5, -196607, 65534, 5, -196606, 65534, 5, -196605, 65534, 5, -196605, 65533, 5, -196605, 65532, 5, -196605, 65531, 5, -196606, 65531, 5, -196607, 65531, 5, -131072, 65531, 5, -131072, 65532, 5, -131072, 65533, 5, -131072, 65534, 5, -131071, 65534, 5, -131070, 65534, 5, -131069, 65534, 5, -131069, 65533, 5, -131069, 65532, 5, -131070, 65532, 5, -131070, 65531, 5, -131069, 65531, 5, -131071, 65531, 5, -65536, 65531, 5, -65535, 65531, 5, -65534, 65531, 5, -65533, 65531, 5, -65533, 65532, 5, -65533, 65533, 5, -65533, 65534, 5, -65534, 65534, 5, -65535, 65534, 5, -65536, 65534, 5, -65536, 65533, 5, -65536, 65532, 5, 0, 65531, 5, 0, 65532, 5, 0, 65533, 5, 0, 65534, 5, 1, 65534, 5, 2, 65534, 5, 1, 65531, 5, 2, 65531, 5, 3, 65531, 5, 3, 65532, 5, 3, 65533, 5, 3, 65534, 5, 65536, 65531, 5, 65536, 65532, 5, 131071, 65532, 5, 131071, 65533, 5, 65536, 65533, 5, 65536, 65534, 5, 65537, 65534, 5, 65538, 65534, 5, 65539, 65534, 5, 65537, 65531, 5, 65538, 65531, 5, 65539, 65531, 5, 65539, 65532, 5, 65539, 65533, 5, 131070, 65533, 5, 131071, 65534, 5, 131071, 65535, 5, 65536, 65535, 5, 65537, 65535, 5, 65539, 65535, 5, 65539, 0, 5, 65540, 65535, 5, 65540, 65534, 5, 65541, 65534, 5, 65540, 65533, 5, 65541, 65533, 5, 65540, 65532, 5, 65539, 65530, 5, 65538, 65530, 1048578, 196606, 65533, 4, 196606, 65532, 5, 196607, 65532, 5, 196607, 65533, 5, 196607, 65534, 5, 196607, 65535, 5, 131072, 65535, 5, 131073, 65535, 5, 131073, 65534, 5, 131074, 65534, 5, 131075, 65534, 5, 131075, 65535, 5, 131075, 0, 4, 131076, 65535, 5, 131076, 65534, 5, 131077, 65534, 5, 131077, 65533, 1048578, 131076, 65532, 5, 131075, 65532, 5, 131075, 65531, 4, 131075, 65530, 1048578, 131074, 65530, 4, 131074, 65531, 5, 131073, 65531, 5, 131072, 65531, 5, 196612, 65535, 4, 196611, 65535, 4, 196613, 65534, 4, 196611, 65534, 4, 196610, 65534, 4, 196609, 65535, 4, 196609, 65534, 4, 196608, 65535, 4, 262143, 65535, 4, 262143, 65534, 4, 262143, 65533, 4, 262143, 65532, 4, 262142, 65533, 4, 262142, 65532, 655360, 196608, 65531, 655362, 196609, 65531, 4, 196610, 65531, 655362, 196611, 65532, 1048578, 196612, 65532, 655360, 196613, 65533, 5, 196612, 65534, 5, 196612, 65533, 5, 196611, 65533, 5, 196610, 65533, 1048578, 196609, 65533, 5, 196608, 65534, 1048576, 196608, 65533, 5, 196610, 65532, 5, 196609, 65532, 5, 196608, 65532, 1048576, 327679, 65535, 5, 262144, 65535, 5, 262145, 65535, 5, 327679, 65534, 5, 262145, 65534, 5, 262146, 65534, 655360, 262147, 65535, 5, 262148, 65535, 5, 262149, 65534, 5, 262149, 65533, 655360, 327679, 65533, 5, 327679, 65532, 1441792, 327678, 65532, 5, 327678, 65533, 5, 327684, 65535, 5, 327683, 65535, 5, 327685, 65534, 5, 327685, 65533, 1441792, 327681, 65535, 1441792, 327680, 65535, 5, 393215, 65535, 5, 393215, 65534, 5, 327682, 65535, 5, 327682, 65534, 5, 327681, 65534, 1441792, 393214, 65533, 5, 393215, 65533, 5, 393215, 65532, 5, 393214, 65532, 1441794, 393220, 65535, 5, 393221, 65535, 5, 393221, 65534, 5, 393221, 65533, 1441794, 393219, 65535, 5, 393218, 65535, 5, 393217, 65535, 5, 393216, 65535, 5, 458751, 65535, 5, 458751, 65534, 5, 458751, 65533, 5, 458750, 65533, 5, 458751, 65532, 2, 458750, 65532, 5, 393217, 65534, 5, 393218, 65534, 5, -131068, 65534, 1048580, -131068, 65533, 1048580, -131068, 65532, 1048580, -131068, 65531, 1048580, -131067, 65534, 1048580, -131067, 65533, 1048580, -131067, 65532, 1048580, -131067, 65531, 1048580, -131066, 65534, 1048578, -131066, 65533, 1048580, -131066, 65532, 1048580, -131066, 65531, 1048581, -65530, 65534, 1048576, -65532, 65534, 1048581, -65531, 65534, 1048581, 4, 65534, 1048581, 5, 65534, 1048581, 6, 65534, 1048581, 65542, 65534, 1048578)
+}
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="Steve" parent="." instance=ExtResource("4_jsrd8")]
+transform = Transform3D(-0.900766, 0, -0.434304, 0, 1, 0, 0.434304, 0, -0.900766, 3.65068, 7.79606, -7.49318)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.978917, -0.0531926, 0.197209, -1.55223e-08, 0.965495, 0.26042, -0.204257, 0.25493, -0.94514, 19.8332, 13.9878, -25)
+
+[node name="Quek" parent="." instance=ExtResource("5_wwsa2")]
+transform = Transform3D(-0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, -0.965926, 12.8615, 0, -8.96123)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_jsrd8")
+volume_db = -20.0
+autoplay = true
+script = ExtResource("7_wbdvm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 53.0
+offset_top = -167.0
+offset_right = 376.0
+offset_bottom = -98.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "One Tap Shot"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+offset_right = 90.0
+offset_bottom = 66.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="CanvasLayer"]
+offset_left = 135.0
+offset_top = 255.0
+offset_right = 288.0
+offset_bottom = 297.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_wbdvm")
 text = "Play Game"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="Exit" type="Button" parent="CanvasLayer"]
+offset_left = 135.0
+offset_top = 301.0
+offset_right = 288.0
+offset_bottom = 343.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_q3rjx")
+text = "Exit
+"
+
+[connection signal="pressed" from="CanvasLayer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/Exit" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Exit" to="." method="_on_exit_pressed"]
