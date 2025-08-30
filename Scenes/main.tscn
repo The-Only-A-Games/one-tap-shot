@@ -44,6 +44,7 @@ autostart = true
 [node name="CanvasLayer" parent="." instance=ExtResource("5_kry3j")]
 
 [node name="BackgroundMusic" type="AudioStreamPlayer3D" parent="."]
+process_mode = 3
 stream = ExtResource("6_21xkr")
 volume_db = -12.0
 autoplay = true

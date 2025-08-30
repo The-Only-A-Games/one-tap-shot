@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b48ppqawqm87i"
+path="res://.godot/imported/Hyper 7.wav-dab266e3fa1243f337990f7edd2b3e17.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Vfx/Hyper 7.wav"
+dest_files=["res://.godot/imported/Hyper 7.wav-dab266e3fa1243f337990f7edd2b3e17.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

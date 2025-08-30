@@ -6,6 +6,7 @@ var score = 0
 @onready var total_kills = $GameOverMenu/TotalKills
 @onready var pause_total = $PauseMenu/PauseTotal
 @onready var pause_menu = $PauseMenu
+@onready var pause = $Control/Pause
 
 
 func _physics_process(delta):
@@ -39,6 +40,7 @@ func _on_button_pressed():
 
 ## Displays the game over screen
 func game_over_screen():
+	pause.visible = false
 	game_over_menu.visible = true
 	
 
@@ -48,6 +50,7 @@ func _on_menu_pressed():
 
 
 func _on_pause_pressed():
+	pause.visible = false
 	pause_menu.visible = true
 	get_tree().paused = true
 
@@ -57,5 +60,6 @@ func _on_replay_pressed():
 
 
 func _on_resume_pressed():
+	pause.visible = true
 	pause_menu.visible = false
 	get_tree().paused = false

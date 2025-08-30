@@ -99,5 +99,5 @@ draw_pass_1 = SubResource("SphereMesh_48id1")
 
 [node name="ExplosionSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_a801j")
-volume_db = -20.0
+volume_db = -10.0
 pitch_scale = 0.93

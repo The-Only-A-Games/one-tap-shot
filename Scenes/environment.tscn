@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ck5ec2k42t0l8"]
+[gd_scene load_steps=5 format=3 uid="uid://ck5ec2k42t0l8"]
+
+[ext_resource type="Script" uid="uid://cw2pchlic88ps" path="res://Scripts/environment.gd" id="1_km3fo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_s71eg"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -21,9 +23,11 @@ fog_height = 1024.0
 fog_height_density = -16.0
 fog_depth_end = 161.0
 
-[node name="Environment" type="Node3D"]
+[node name="Environment" type="Node3D" groups=["world_env"]]
+script = ExtResource("1_km3fo")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+unique_name_in_owner = true
 environment = SubResource("Environment_ir44m")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

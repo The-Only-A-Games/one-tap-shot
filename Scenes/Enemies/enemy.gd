@@ -35,6 +35,10 @@ func _physics_process(delta):
 		## Only move while the player is still alive
 		if canvas_layer.get_health() > 0:
 			move_and_slide()
+		
+		if (canvas_layer.get_health() <= 0):
+			queue_free()
+			explode_enemy()
 
 
 ## FOR PLAYER!!!
@@ -60,4 +64,3 @@ func _on_area_3d_body_entered(body):
 		explode_enemy()
 		camera.apply_shake()
 		queue_free()
-		#camera.discard_shake()

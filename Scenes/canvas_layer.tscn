@@ -7,10 +7,10 @@
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5oaki"]
-bg_color = Color(4.57242e-06, 0.707316, 0.509078, 1)
+bg_color = Color(1, 0.352518, 0.16899, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3h87t"]
-bg_color = Color(0.188235, 0.67451, 0.698039, 1)
+bg_color = Color(1, 0.352941, 0.168627, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q85f0"]
 bg_color = Color(0.188235, 0.67451, 0.698039, 1)
@@ -77,6 +77,7 @@ offset_bottom = 15.468
 grow_horizontal = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_3h87t")
 text = "Pause"
+metadata/_edit_use_anchors_ = true
 
 [node name="GameOverMenu" type="Control" parent="."]
 process_mode = 3
