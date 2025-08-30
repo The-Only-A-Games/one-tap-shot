@@ -10,6 +10,7 @@ const SPEED = 2
 @onready var area_3d = $Area3D
 var canvas_layer
 var player
+var camera
 @onready var quek = $Quek
 const EXPLOSION = preload("res://Scenes/explosion.tscn")
 @onready var marker = $Marker
@@ -18,6 +19,7 @@ const EXPLOSION = preload("res://Scenes/explosion.tscn")
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	canvas_layer = get_tree().get_first_node_in_group("canvas_layer")
+	camera = get_tree().get_first_node_in_group("camera")
 
 
 func _physics_process(delta):
@@ -39,6 +41,7 @@ func _physics_process(delta):
 # player calls kill() too kill the player
 func kill():
 	explode_enemy()
+	camera.apply_shake()
 	queue_free()
 
 
@@ -55,4 +58,6 @@ func _on_area_3d_body_entered(body):
 	if body.is_in_group("player"):
 		canvas_layer.player_damage(10)
 		explode_enemy()
+		camera.apply_shake()
 		queue_free()
+		#camera.discard_shake()

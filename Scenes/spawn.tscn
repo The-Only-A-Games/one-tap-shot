@@ -37,6 +37,7 @@ radial_segments = 16
 rings = 8
 
 [node name="Spawn" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_e66bb")
 
 [node name="EnergyScatter" type="GPUParticles3D" parent="."]
