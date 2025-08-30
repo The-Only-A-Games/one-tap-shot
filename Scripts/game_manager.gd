@@ -10,15 +10,20 @@ const WORLD_SIZE = 10.0   # half width of
 const ENEMY = preload("res://Scenes/Enemies/enemy.tscn")
 var canvas_layer
 var timer
+var pick_ups
 const SPAWN = preload("res://Scenes/spawn.tscn")
+@onready var pick_up_timer = $PickUpTimer
+const PICK_UP = preload("res://Scenes/PowerUps/pick_up.tscn")
 
 func _ready():
 	get_tree().paused = false
 	canvas_layer = get_tree().get_first_node_in_group("canvas_layer")
 	timer = get_tree().get_first_node_in_group("time")
+	pick_ups = get_tree().get_nodes_in_group("pick_up")
 
 
 func _physics_process(delta):
+	pick_ups = get_tree().get_nodes_in_group("pick_up")
 	
 	match canvas_layer.get_score():
 		20:
@@ -75,3 +80,9 @@ func _on_timer_timeout():
 	# Keep spawning as long as the player is alive
 	if canvas_layer.get_health() > 0:
 		spawn_enemy()
+
+
+func _on_pick_up_timer_timeout():
+	var pu = PICK_UP.instantiate()
+	if pick_ups == null or pick_ups.size() == 0:
+		add_child(pu)

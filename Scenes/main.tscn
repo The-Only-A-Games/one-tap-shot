@@ -54,4 +54,9 @@ script = ExtResource("7_6bp64")
 [node name="PickUp" parent="." instance=ExtResource("9_ynf5e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.87412, 0.05, -9.97836)
 
+[node name="PickUpTimer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="PickUpTimer" to="." method="_on_pick_up_timer_timeout"]

@@ -16,6 +16,8 @@ const EXPLOSION = preload("res://Scenes/explosion.tscn")
 @onready var bullet_vfx = $BulletVfx
 @onready var power_up_marker = $PowerUpMarker
 const DOOM_CIRCLE = preload("res://Scenes/PowerUps/doom_circle.tscn")
+@onready var collision_shape = $CollisionShape
+
 
 func _ready():
 	canvas_layer = get_tree().get_first_node_in_group("canvas_layer")
@@ -49,9 +51,11 @@ func _physics_process(delta):
 	if canvas_layer.get_power_up() > 0 and not power_up_activated:
 		power_up()
 		power_up_activated = true
+		collision_shape.disabled = true
 	
 	if canvas_layer.get_power_up() <= 0:
 		power_up_activated = false
+		collision_shape.disabled = false
 
 
 ## Gets the closest enemy to the player

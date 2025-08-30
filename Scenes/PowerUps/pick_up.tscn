@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d06ioqqq5s4h7"]
+[gd_scene load_steps=5 format=3 uid="uid://d06ioqqq5s4h7"]
 
 [ext_resource type="Script" uid="uid://b2mvrhaufq5cm" path="res://Scenes/PowerUps/pick_up.gd" id="1_hafc1"]
+[ext_resource type="AudioStream" uid="uid://brv077ckyw8dc" path="res://Assets/Sounds/Vfx/Item1A.wav" id="2_ilf8d"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_vh87p"]
 height = 0.1
@@ -16,5 +17,8 @@ mesh = SubResource("CylinderMesh_vh87p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_hafc1")
+
+[node name="PickUpSound" type="AudioStreamPlayer3D" parent="." groups=["pick_up"]]
+stream = ExtResource("2_ilf8d")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

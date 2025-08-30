@@ -15,7 +15,7 @@ func _physics_process(delta):
 	pause_total.text = "Total Kills: " + str(score)
 	
 	## Whenever a power up has been picked up decrease it
-	power_up.value -= 20 * delta
+	power_up.value -= 15 * delta
 
 ## Decreses the player health bar
 func player_damage(n):
