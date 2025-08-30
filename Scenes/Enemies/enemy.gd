@@ -42,7 +42,7 @@ func _physics_process(delta):
 
 
 ## FOR PLAYER!!!
-# player calls kill() too kill the player
+# player calls kill() to kill the player
 func kill():
 	explode_enemy()
 	camera.apply_shake()

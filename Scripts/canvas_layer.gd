@@ -7,11 +7,15 @@ var score = 0
 @onready var pause_total = $PauseMenu/PauseTotal
 @onready var pause_menu = $PauseMenu
 @onready var pause = $Control/Pause
+@onready var power_up = $Control/PowerUp
 
 
 func _physics_process(delta):
 	total_kills.text = "Total Kills: " + str(score)
 	pause_total.text = "Total Kills: " + str(score)
+	
+	## Whenever a power up has been picked up decrease it
+	power_up.value -= 20 * delta
 
 ## Decreses the player health bar
 func player_damage(n):
@@ -63,3 +67,11 @@ func _on_resume_pressed():
 	pause.visible = true
 	pause_menu.visible = false
 	get_tree().paused = false
+
+
+func get_power_up():
+	return power_up.value
+
+
+func reset_power_up():
+	power_up.value = 100

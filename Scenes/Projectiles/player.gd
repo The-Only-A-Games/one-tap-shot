@@ -5,7 +5,7 @@ extends CharacterBody3D
 
 
 ## Player Atrributes
-
+var power_up_activated = false
 
 ## Player Tools
 @onready var marker = %Marker3D
@@ -14,7 +14,8 @@ var canvas_layer
 var camera
 const EXPLOSION = preload("res://Scenes/explosion.tscn")
 @onready var bullet_vfx = $BulletVfx
-
+@onready var power_up_marker = $PowerUpMarker
+const DOOM_CIRCLE = preload("res://Scenes/PowerUps/doom_circle.tscn")
 
 func _ready():
 	canvas_layer = get_tree().get_first_node_in_group("canvas_layer")
@@ -43,6 +44,14 @@ func _physics_process(delta):
 	# Shoot when pressed
 	if Input.is_action_just_pressed("shoot") and not canvas_layer.get_health() <= 0.0:
 		shoot()
+	
+	## Make sure we can only spawn 1 doom circle
+	if canvas_layer.get_power_up() > 0 and not power_up_activated:
+		power_up()
+		power_up_activated = true
+	
+	if canvas_layer.get_power_up() <= 0:
+		power_up_activated = false
 
 
 ## Gets the closest enemy to the player
@@ -96,3 +105,9 @@ func rotate_toward_mouse():
 		target.y = global_transform.origin.y  # keep flat
 		look_at(target, Vector3.UP)
 		return target
+
+
+func power_up():
+	var power_up = DOOM_CIRCLE.instantiate()
+	add_child(power_up)
+	power_up.global_transform.origin = power_up_marker.global_transform.origin

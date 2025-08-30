@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://xmkwy1whb4bm"]
+[gd_scene load_steps=13 format=3 uid="uid://xmkwy1whb4bm"]
 
 [ext_resource type="Script" uid="uid://dxs4v3dnt86lk" path="res://Scripts/canvas_layer.gd" id="1_5oaki"]
 [ext_resource type="Script" uid="uid://ke72v0o3qmcf" path="res://Scripts/game_over_menu.gd" id="2_q85f0"]
@@ -11,6 +11,12 @@ bg_color = Color(1, 0.352518, 0.16899, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3h87t"]
 bg_color = Color(1, 0.352941, 0.168627, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfa7q"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ykgyh"]
+bg_color = Color(0.716758, 0.582701, 0.223102, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q85f0"]
 bg_color = Color(0.188235, 0.67451, 0.698039, 1)
@@ -63,6 +69,14 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_5oaki")
 value = 100.0
 show_percentage = false
 
+[node name="Label" type="Label" parent="Control/Health"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 54.0
+offset_bottom = 24.0
+text = "Health"
+
 [node name="Pause" type="Button" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
@@ -78,6 +92,25 @@ grow_horizontal = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_3h87t")
 text = "Pause"
 metadata/_edit_use_anchors_ = true
+
+[node name="PowerUp" type="ProgressBar" parent="Control"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 46.0
+offset_right = 217.0
+offset_bottom = 73.0
+theme_override_styles/background = SubResource("StyleBoxFlat_rfa7q")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ykgyh")
+value = 100.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Control/PowerUp"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 2.0
+offset_right = 76.0
+offset_bottom = 25.0
+text = "Power Up"
 
 [node name="GameOverMenu" type="Control" parent="."]
 process_mode = 3
