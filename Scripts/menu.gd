@@ -2,6 +2,9 @@ extends Node3D
 
 
 
+func _ready():
+	get_tree().paused = false
+
 
 ## Goes to main scene
 func _on_play_pressed():

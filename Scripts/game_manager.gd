@@ -13,6 +13,7 @@ var timer
 
 
 func _ready():
+	get_tree().paused = false
 	canvas_layer = get_tree().get_first_node_in_group("canvas_layer")
 	timer = get_tree().get_first_node_in_group("time")
 

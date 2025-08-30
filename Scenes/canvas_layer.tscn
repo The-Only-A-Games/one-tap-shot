@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://xmkwy1whb4bm"]
+[gd_scene load_steps=11 format=3 uid="uid://xmkwy1whb4bm"]
 
 [ext_resource type="Script" uid="uid://dxs4v3dnt86lk" path="res://Scripts/canvas_layer.gd" id="1_5oaki"]
 [ext_resource type="Script" uid="uid://ke72v0o3qmcf" path="res://Scripts/game_over_menu.gd" id="2_q85f0"]
@@ -7,12 +7,51 @@
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5oaki"]
-bg_color = Color(3.85046e-07, 0.685157, 0.696938, 1)
+bg_color = Color(4.57242e-06, 0.707316, 0.509078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3h87t"]
+bg_color = Color(0.188235, 0.67451, 0.698039, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q85f0"]
+bg_color = Color(0.188235, 0.67451, 0.698039, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1mel"]
+bg_color = Color(0.188235, 0.67451, 0.698039, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u5uhc"]
+bg_color = Color(0.188235, 0.67451, 0.698039, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6y36"]
+bg_color = Color(0.188235, 0.67451, 0.698039, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shopd"]
+bg_color = Color(0.188235, 0.67451, 0.698039, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" groups=["canvas_layer"]]
 script = ExtResource("1_5oaki")
 
-[node name="Health" type="ProgressBar" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 132.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -109.0
+offset_top = 6.0
+offset_right = -11.0
+offset_bottom = 56.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "Kills: 0"
+
+[node name="Health" type="ProgressBar" parent="Control"]
 unique_name_in_owner = true
 offset_left = 8.0
 offset_top = 11.0
@@ -23,35 +62,29 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_5oaki")
 value = 100.0
 show_percentage = false
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1097.0
-offset_top = 11.0
-offset_right = 1137.0
-offset_bottom = 51.0
-
-[node name="Label" type="Label" parent="Control"]
-unique_name_in_owner = true
+[node name="Pause" type="Button" parent="Control"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+anchors_preset = -1
+anchor_left = 0.499
+anchor_top = 0.201
+anchor_right = 0.499
+anchor_bottom = 0.201
+offset_left = -27.848
+offset_top = -15.532
+offset_right = 27.152
+offset_bottom = 15.468
 grow_horizontal = 2
-grow_vertical = 2
-text = "Kills: 0"
+theme_override_styles/normal = SubResource("StyleBoxFlat_3h87t")
+text = "Pause"
 
 [node name="GameOverMenu" type="Control" parent="."]
+process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 135.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_q85f0")
@@ -64,12 +97,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -143.0
+offset_top = -15.5
+offset_right = 127.0
+offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_q85f0")
 text = "Replay
 "
 
@@ -80,13 +114,109 @@ anchor_left = 0.5
 anchor_top = 0.562
 anchor_right = 0.5
 anchor_bottom = 0.562
-offset_left = -48.0
-offset_top = -15.176
-offset_right = 48.0
-offset_bottom = 15.824
+offset_left = -143.0
+offset_top = -15.306
+offset_right = 127.0
+offset_bottom = 15.694
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_p1mel")
 text = "Main Menu"
 
+[node name="TotalKills" type="Label" parent="GameOverMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.427
+anchor_top = 0.356
+anchor_right = 0.427
+anchor_bottom = 0.356
+offset_left = 0.0959778
+offset_top = -27.628
+offset_right = 217.096
+offset_bottom = 27.372
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Total Kills : "
+
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 143.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseTotal" type="Label" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.373
+anchor_right = 0.5
+anchor_bottom = 0.373
+offset_left = -46.5
+offset_top = -11.365
+offset_right = 46.5
+offset_bottom = 11.635
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Total Kills: 0"
+
+[node name="Resume" type="Button" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.452
+anchor_right = 0.5
+anchor_bottom = 0.452
+offset_left = -132.0
+offset_top = -15.26
+offset_right = 142.0
+offset_bottom = 24.74
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_u5uhc")
+text = "Resume"
+
+[node name="Replay" type="Button" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.551
+anchor_right = 0.5
+anchor_bottom = 0.551
+offset_left = -132.0
+offset_top = -15.255
+offset_right = 143.0
+offset_bottom = 26.745
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_o6y36")
+text = "Restart"
+
+[node name="Menu" type="Button" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.643
+anchor_right = 0.5
+anchor_bottom = 0.643
+offset_left = -132.0
+offset_top = -15.715
+offset_right = 142.0
+offset_bottom = 27.285
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_shopd")
+text = "Main Menu"
+
+[connection signal="pressed" from="Control/Pause" to="." method="_on_pause_pressed"]
 [connection signal="pressed" from="GameOverMenu/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="GameOverMenu/menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="PauseMenu/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/Replay" to="." method="_on_replay_pressed"]
+[connection signal="pressed" from="PauseMenu/Menu" to="." method="_on_menu_pressed"]

@@ -3,7 +3,14 @@ extends CanvasLayer
 var score = 0
 @onready var button = %Button
 @onready var game_over_menu = $GameOverMenu
+@onready var total_kills = $GameOverMenu/TotalKills
+@onready var pause_total = $PauseMenu/PauseTotal
+@onready var pause_menu = $PauseMenu
 
+
+func _physics_process(delta):
+	total_kills.text = "Total Kills: " + str(score)
+	pause_total.text = "Total Kills: " + str(score)
 
 ## Decreses the player health bar
 func player_damage(n):
@@ -38,3 +45,17 @@ func game_over_screen():
 
 func _on_menu_pressed():
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+
+
+func _on_pause_pressed():
+	pause_menu.visible = true
+	get_tree().paused = true
+
+
+func _on_replay_pressed():
+	get_tree().reload_current_scene()
+
+
+func _on_resume_pressed():
+	pause_menu.visible = false
+	get_tree().paused = false
