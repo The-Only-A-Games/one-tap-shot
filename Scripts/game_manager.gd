@@ -10,7 +10,7 @@ const WORLD_SIZE = 10.0   # half width of
 const ENEMY = preload("res://Scenes/Enemies/enemy.tscn")
 var canvas_layer
 var timer
-
+const SPAWN = preload("res://Scenes/spawn.tscn")
 
 func _ready():
 	get_tree().paused = false
@@ -33,8 +33,17 @@ func _physics_process(delta):
 
 ## Spawns enemy
 func spawn_enemy():
+	var spawn = SPAWN.instantiate()
 	var enemy = ENEMY.instantiate()
-	enemy.transform.origin = get_random_edge_position(0.0)
+	
+	var random_position = get_random_edge_position(0.0)
+	enemy.transform.origin = random_position
+	spawn.transform.origin = random_position
+	add_child(spawn)
+	
+	spawn.spawn()
+	
+	await get_tree().create_timer(1.3).timeout
 	add_child(enemy)
 
 
