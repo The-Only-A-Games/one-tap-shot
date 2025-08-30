@@ -14,6 +14,8 @@ var pick_ups
 const SPAWN = preload("res://Scenes/spawn.tscn")
 @onready var pick_up_timer = $PickUpTimer
 const PICK_UP = preload("res://Scenes/PowerUps/pick_up.tscn")
+const SPECIAL_ENEMY = preload("res://Scenes/Enemies/special_enemy.tscn")
+
 
 func _ready():
 	get_tree().paused = false
@@ -30,16 +32,25 @@ func _physics_process(delta):
 			timer.wait_time = 1.0
 		50:
 			timer.wait_time = 0.8
+			pick_up_timer.wait_time = 25
 		150:
 			timer.wait_time = 0.5
+			pick_up_timer.wait_time = 20
 		300:
 			timer.wait_time = 0.2
+			pick_up_timer.wait_time = 10
 
 
 ## Spawns enemy
 func spawn_enemy():
+	var roll = randf()
+	var enemy
 	var spawn = SPAWN.instantiate()
-	var enemy = ENEMY.instantiate()
+	
+	if roll < 0.8:
+		enemy = ENEMY.instantiate()
+	else:
+		enemy = SPECIAL_ENEMY.instantiate()
 	
 	var random_position = get_random_edge_position(0.0)
 	enemy.transform.origin = random_position

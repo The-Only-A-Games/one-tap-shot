@@ -2,23 +2,22 @@
 
 [ext_resource type="Script" uid="uid://b2mvrhaufq5cm" path="res://Scenes/PowerUps/pick_up.gd" id="1_hafc1"]
 [ext_resource type="AudioStream" uid="uid://brv077ckyw8dc" path="res://Assets/Sounds/Vfx/Item1A.wav" id="2_ilf8d"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_vh87p"]
-height = 0.1
+[ext_resource type="PackedScene" uid="uid://cmvljj3qymlot" path="res://Assets/Power Ups/PickUp.glb" id="3_1ctj5"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_hafc1"]
-height = 0.1
+height = 0.4
+radius = 0.8
 
 [node name="PickUp" type="Area3D"]
 script = ExtResource("1_hafc1")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CylinderMesh_vh87p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_hafc1")
 
 [node name="PickUpSound" type="AudioStreamPlayer3D" parent="." groups=["pick_up"]]
 stream = ExtResource("2_ilf8d")
+
+[node name="PickUp" parent="." instance=ExtResource("3_1ctj5")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

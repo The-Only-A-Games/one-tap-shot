@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2nphxt07datb"]
+[gd_scene load_steps=12 format=3 uid="uid://d2nphxt07datb"]
 
 [ext_resource type="Script" uid="uid://dqx6dokbesy5a" path="res://Scripts/menu.gd" id="1_1rerr"]
 [ext_resource type="PackedScene" uid="uid://ck5ec2k42t0l8" path="res://Scenes/environment.tscn" id="2_158mb"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cnl1ot7mntpl6" path="res://Assets/Enemies/Quek.glb" id="5_wwsa2"]
 [ext_resource type="AudioStream" uid="uid://bpa51hcsruw01" path="res://Assets/Sounds/Music/day1.wav" id="6_jsrd8"]
 [ext_resource type="Script" uid="uid://wks5pesoask" path="res://Scripts/music_player.gd" id="7_wbdvm"]
+[ext_resource type="PackedScene" uid="uid://btypermmylx4j" path="res://Scenes/Enemies/special_enemy.tscn" id="9_6swd7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbdvm"]
 bg_color = Color(0.187388, 0.676252, 0.69894, 1)
@@ -28,7 +29,7 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
 [node name="Steve" parent="." instance=ExtResource("4_jsrd8")]
-transform = Transform3D(-0.900766, 0, -0.434304, 0, 1, 0, 0.434304, 0, -0.900766, 3.65068, 7.79606, -7.49318)
+transform = Transform3D(-0.900766, 0, -0.434304, 0, 1, 0, 0.434304, 0, -0.900766, 3.65068, 8.09606, -7.49318)
 
 [node name="Camera3D" type="Camera3D" parent="." groups=["camera"]]
 transform = Transform3D(-0.978917, -0.0531926, 0.197209, -1.55223e-08, 0.965495, 0.26042, -0.204257, 0.25493, -0.94514, 19.8332, 13.9878, -25)
@@ -104,6 +105,9 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_q3rjx")
 text = "Exit
 "
 
+[node name="SpecialEnemy2" parent="." instance=ExtResource("9_6swd7")]
+transform = Transform3D(0.975471, 0, -0.475158, 0, 1.08504, 0, 0.475158, 0, 0.975471, 15.2502, 15.1271, -6.27414)
+
 [connection signal="pressed" from="CanvasLayer/Control/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="CanvasLayer/Control/Exit" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/Exit" to="." method="_on_button_pressed"]

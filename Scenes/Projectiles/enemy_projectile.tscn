@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8abemoks0yao"]
+
+[ext_resource type="Script" uid="uid://vg811500fyl3" path="res://Scenes/Projectiles/enemy_projectile.gd" id="1_iqpfl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iqpfl"]
+albedo_color = Color(0.905882, 0.356863, 0, 1)
+emission_enabled = true
+emission = Color(0.905882, 0.356863, 0, 1)
+emission_energy_multiplier = 3.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_ajw8d"]
+material = SubResource("StandardMaterial3D_iqpfl")
+size = Vector3(0.2, 0.2, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iqpfl"]
+size = Vector3(0.2, 0.2, 0.3)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iqpfl"]
+spread = 180.0
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4dw4x"]
+albedo_color = Color(0.905882, 0.356863, 0, 1)
+emission_enabled = true
+emission = Color(0.905882, 0.356863, 0, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_gvsvj"]
+material = SubResource("StandardMaterial3D_4dw4x")
+size = Vector3(0.3, 0.3, 0.3)
+
+[node name="EnemyProjectile" type="Area3D" groups=["enemies"]]
+top_level = true
+script = ExtResource("1_iqpfl")
+
+[node name="BulletMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ajw8d")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_iqpfl")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 50
+lifetime = 1.5
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_iqpfl")
+draw_pass_1 = SubResource("BoxMesh_gvsvj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
