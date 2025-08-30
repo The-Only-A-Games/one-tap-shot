@@ -31,9 +31,10 @@ metadata/_editor_floor_ = Vector3(0, -4, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.36607, 0, -0.708284)
 
 [node name="Camera3D" type="Camera3D" parent="." groups=["camera"]]
-transform = Transform3D(-2.40304e-08, 0.835328, -0.549752, 3.65133e-08, 0.549752, 0.835328, 1, 1.77636e-15, -4.37114e-08, -18.8214, 23.3954, 1.66186)
+transform = Transform3D(-2.40304e-08, 0.835328, -0.549752, 3.65133e-08, 0.549752, 0.835328, 1, 7.10543e-15, -4.37113e-08, -12.9325, 15.6129, 1.66186)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." groups=["time"]]
+wait_time = 1.5
 autostart = true
 
 [node name="CanvasLayer" parent="." instance=ExtResource("5_kry3j")]

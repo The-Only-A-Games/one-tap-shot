@@ -7,12 +7,27 @@ const WORLD_SIZE = 10.0   # half width of
 
 ## Game Manager Tools
 @export var canvas_layer_path : NodePath
-var canvas_layer
 const ENEMY = preload("res://Scenes/Enemies/enemy.tscn")
+var canvas_layer
+var timer
 
 
 func _ready():
 	canvas_layer = get_tree().get_first_node_in_group("canvas_layer")
+	timer = get_tree().get_first_node_in_group("time")
+
+
+func _physics_process(delta):
+	
+	match canvas_layer.get_score():
+		20:
+			timer.wait_time = 1.0
+		50:
+			timer.wait_time = 0.8
+		150:
+			timer.wait_time = 0.5
+		300:
+			timer.wait_time = 0.2
 
 
 ## Spawns enemy

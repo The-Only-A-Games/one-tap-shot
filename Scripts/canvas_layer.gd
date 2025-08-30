@@ -10,7 +10,7 @@ func player_damage(n):
 	%Health.value -= n
 
 
-## Gets the player healh value
+## Gets the player's healh value
 func get_health():
 	return %Health.value
 
@@ -20,6 +20,10 @@ func update_score(n):
 	score += n
 	%Label.text = "Kills: " + str(score)
 
+
+## Get the player's score
+func get_score():
+	return score
 
 ## Reloads game when button is pressed
 func _on_button_pressed():

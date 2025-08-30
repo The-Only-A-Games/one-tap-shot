@@ -22,7 +22,7 @@ func _physics_process(delta):
 		nav_agent.set_target_position(player.global_position)
 		var next_nav_point = nav_agent.get_next_path_position()
 		var lookDirection = Vector3(player.global_position.x, 0, player.global_position.z)
-		#look_at(lookDirection, Vector3.UP)
+		look_at(lookDirection, Vector3.UP)
 		
 		velocity = (next_nav_point - global_position).normalized() * SPEED
 		
