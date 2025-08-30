@@ -12,7 +12,7 @@ extends CharacterBody3D
 const PLAYER_PROJECTILE = preload("res://Scenes/Projectiles/player_projectile.tscn")
 var canvas_layer
 var camera
-
+const EXPLOSION = preload("res://Scenes/explosion.tscn")
 
 func _ready():
 	canvas_layer = get_tree().get_first_node_in_group("canvas_layer")

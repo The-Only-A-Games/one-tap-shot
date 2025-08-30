@@ -10,6 +10,9 @@ const SPEED = 2
 @onready var area_3d = $Area3D
 var canvas_layer
 var player
+@onready var quek = $Quek
+const EXPLOSION = preload("res://Scenes/explosion.tscn")
+@onready var marker = $Marker
 
 
 func _ready():
@@ -35,11 +38,21 @@ func _physics_process(delta):
 ## FOR PLAYER!!!
 # player calls kill() too kill the player
 func kill():
+	explode_enemy()
 	queue_free()
+
+
+func explode_enemy():
+	quek.queue_free()
+	var explosion = EXPLOSION.instantiate()
+	explosion.global_transform = marker.global_transform
+	get_tree().current_scene.add_child(explosion)
+	explosion.explode()
 
 
 ## Damage player if close enough
 func _on_area_3d_body_entered(body):
 	if body.is_in_group("player"):
 		canvas_layer.player_damage(10)
+		explode_enemy()
 		queue_free()
