@@ -52,6 +52,6 @@ draw_pass_1 = SubResource("BoxMesh_gvsvj")
 
 [node name="HitSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_4dw4x")
-volume_db = -12.0
+volume_db = -5.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
