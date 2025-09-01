@@ -69,7 +69,7 @@ func explode_enemy():
 func shoot():
 	blaster_sound.play()
 	var bullet = ENEMY_PROJECTILE.instantiate()
-	add_child(bullet)
+	get_tree().current_scene.add_child(bullet)
 	bullet.global_transform = marker.global_transform
 
 

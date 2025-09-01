@@ -10,6 +10,7 @@ var camera
 var enemy_shot = false
 @onready var gpu_particles_3d = $GPUParticles3D
 @onready var bullet_mesh = $BulletMesh
+@onready var hit_sound = $HitSound
 
 
 func _ready():
@@ -37,5 +38,6 @@ func _on_body_entered(body):
 		gpu_particles_3d.emitting = true
 		camera.apply_shake()
 		enemy_shot = true
+		hit_sound.play()
 		await get_tree().create_timer(0.5).timeout
 		queue_free()

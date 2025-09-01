@@ -18,6 +18,7 @@ glow_enabled = true
 fog_enabled = true
 fog_mode = 1
 fog_light_color = Color(0.305882, 0.576471, 0.705882, 1)
+fog_light_energy = 0.5
 fog_density = 1.0
 fog_height = 1024.0
 fog_height_density = -16.0
@@ -32,5 +33,5 @@ environment = SubResource("Environment_ir44m")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 33.4079, 0)
-light_energy = 0.677
+light_energy = 0.5
 shadow_enabled = true

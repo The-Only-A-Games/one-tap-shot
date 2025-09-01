@@ -8,7 +8,10 @@ var score = 0
 @onready var pause_menu = $PauseMenu
 @onready var pause = $Control/Pause
 @onready var power_up = $Control/PowerUp
+@onready var instructions = $Control/Instructions
 
+const INSTRUCTION_TIME_LIMIT = 60
+var count_sec = 0
 
 func _physics_process(delta):
 	total_kills.text = "Total Kills: " + str(score)
@@ -16,6 +19,11 @@ func _physics_process(delta):
 	
 	## Whenever a power up has been picked up decrease it
 	power_up.value -= 15 * delta
+	
+	count_sec *= delta
+	
+	if count_sec >= INSTRUCTION_TIME_LIMIT:
+		instructions.queue_free()
 
 ## Decreses the player health bar
 func player_damage(n):

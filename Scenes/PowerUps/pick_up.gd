@@ -2,6 +2,7 @@ extends Area3D
 
 @onready var pick_up_sound = $PickUpSound
 var canvas_layer
+@onready var pick_up = $PickUp
 
 
 func _ready():
@@ -13,6 +14,8 @@ func _on_body_entered(body):
 	if body.is_in_group("player"):
 		pick_up_sound.play()
 		canvas_layer.reset_power_up()
+		pick_up.visible = false
+		await get_tree().create_timer(1.83).timeout
 		queue_free()
 
 

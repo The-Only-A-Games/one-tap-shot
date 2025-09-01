@@ -112,6 +112,16 @@ offset_right = 76.0
 offset_bottom = 25.0
 text = "Power Up"
 
+[node name="Instructions" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 73.0
+offset_right = 691.0
+offset_bottom = 148.0
+text = "Movement: Your bot moves toward the mouse cursor where you point is where it goes.
+Aiming: The bot always faces the cursor.
+Fire: Left-click to shoot in the direction you’re facing."
+
 [node name="GameOverMenu" type="Control" parent="."]
 process_mode = 3
 visible = false
